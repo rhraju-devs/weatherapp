@@ -5,6 +5,23 @@ document.addEventListener('DOMContentLoaded', function() {
   const weatherInfo = document.getElementById('weather-info');
   const weatherTable = document.getElementById('weather-table');
 
+  
+  toastr.options = {
+    closeButton: true,
+    progressBar: true,
+    positionClass: 'toast-top-right',
+    preventDuplicates: true,
+    newestOnTop: true,
+    showDuration: 300,
+    hideDuration: 1000,
+    timeOut: 5000,
+    extendedTimeOut: 1000,
+    showEasing: 'swing',
+    hideEasing: 'linear',
+    showMethod: 'fadeIn',
+    hideMethod: 'fadeOut'
+  };
+
   const searchWeather = function() {
     const city = cityInput.value;
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
@@ -73,12 +90,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const weatherContainer = document.querySelector('.weather-container');
         weatherContainer.appendChild(weatherImage);
+        toastr.success(`${name} data found successfully`, 'Success');
       })
       .catch(error => {
         console.log('Error:', error);
         weatherTable.style.display = 'none';
         weatherInfo.style.display = 'block';
         weatherInfo.innerHTML = 'Error fetching weather data.';
+        toastr.error('Error fetching weather data.', 'Error');
       });
   };
 
@@ -88,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
     } else if (weatherDescription.includes('rain')) {
       return 'rain.jpeg';
     } else if (weatherDescription.includes('sun')) {
-      return 'light-rain-at-night';
+      return 'light-rain-at-night.jpeg';
     } else {
       return 'sloot.jpeg';
     }
