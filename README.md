@@ -1,3 +1,3 @@
-# weatherapp
-Weather application Live Link
+# weatherapp Live Link
+Weather application
 https://rhraju-devs.github.io/weatherapp/
