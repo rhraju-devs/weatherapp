@@ -101,19 +101,32 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   };
 
-  const getImageSrc = function(weatherDescription) {
-    if (weatherDescription.includes('cloud')) {
+  // const getImageSrc = function(weatherDescription) {
+  //   if (weatherDescription.includes('cloud')) {
+  //     return 'cloud.jpeg';
+  //   } else if (weatherDescription.includes('rain')) {
+  //     return 'rain.jpeg';
+  //   } else if (weatherDescription.includes('sun')) {
+  //     return 'light-rain-at-night.jpeg';
+  //   } else {
+  //     return 'sloot.jpeg';
+  //   }
+  // };
+  
+  const getImageSrc = (weatherDescription) =>{
+    if(weatherDescription.includes('cloud'))
+    {
       return 'cloud.jpeg';
-    } else if (weatherDescription.includes('rain')) {
+    }
+    else if(weatherDescription.includes('rain')){
       return 'rain.jpeg';
-    } else if (weatherDescription.includes('sun')) {
+    }
+    else if(weatherDescription.includes('sun')){
       return 'light-rain-at-night.jpeg';
-    } else {
+    }else{
       return 'sloot.jpeg';
     }
-  };
-  
-
+  }
 
 
   searchButton.addEventListener('click', searchWeather);
